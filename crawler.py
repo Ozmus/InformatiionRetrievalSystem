@@ -70,9 +70,10 @@ class Crawler:
                 temp = json.load(file)
             except:
                 temp = []
-                
+
         for i in range(0, len(self.webPages_data)):
-            temp.append(self.webPages_data[i])
+            if(self.webPages_data[i] != None):
+                temp.append(self.webPages_data[i])
 
         with open("webPages.json", "w", encoding="utf-8") as file:
             json.dump(temp, file, ensure_ascii=False, indent=4)
