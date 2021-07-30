@@ -8,33 +8,6 @@ import jpype
 with open("webPages.json", "r", encoding="utf-8") as file:
     webPages = json.load(file)
 
-"""
-#Noktalama isaretlerinin atilmasi
-nok = '''!‡()|-–—[]{};:'"\, ’<>./?@#$%^&*_~'''
-
-for i in range(0, 3):
-    for char in webPages[i]["body"]:
-        if char in nok:
-            webPages[i]["body"] = webPages[i]["body"].replace(char, " ")
-
-
-invertedIndex = {}
-for i in range(0, 3):
-    tokenizedWebPages = webPages[i]["body"].lower().split()
-    for item in tokenizedWebPages:
-        if item not in invertedIndex:
-            invertedIndex[item] = {}
-
-        if item in invertedIndex:
-            try:
-                invertedIndex[item][i] += 1
-            except:
-                invertedIndex[item][i] = 1
-
-print(invertedIndex)
-"""
-#Kelimenin kökünü alma
-
 # JVM başlat
 # Aşağıdaki adresleri java sürümünüze ve jar dosyasının bulunduğu klasöre göre değiştirin
 jpype.startJVM("C:\\Program Files\\Java\\jdk-11.0.1\\bin\\server\\jvm.dll",
@@ -56,7 +29,7 @@ for i in range(0, len(webPages)):
         if char in nok:
             webPages[i]["body"] = webPages[i]["body"].replace(char, " ")
 
-
+#Kok alma işlemi ve inverted list oluşturma
 invertedIndex = {}
 for i in range(0, len(webPages)):
     tokenizedWebPages = webPages[i]["body"].lower().split()
