@@ -48,7 +48,15 @@ for i in range(0, len(webPages)):
             except:
                 invertedIndex[word][i] = 1
 
-print(invertedIndex)
+print(len(invertedIndex))
+a =0
+for i in invertedIndex.keys():
+    if(a < 10):
+        a +=1
+        print(invertedIndex[i])
+
+with open("invertedList.json", "w", encoding="utf-8") as file:
+    json.dump(invertedIndex, file, ensure_ascii=False, indent=4)
 
 #JVM kapat
 jpype.shutdownJVM()
