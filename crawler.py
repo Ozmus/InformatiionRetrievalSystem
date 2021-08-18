@@ -71,7 +71,7 @@ class Crawler:
             finally:
                 self.visited_urls.append(url)
 
-        with open("webPages2.json", "r", encoding="utf-8") as file:
+        with open("webPages.json", "r", encoding="utf-8") as file:
             try:
                 temp = json.load(file)
             except:
@@ -81,7 +81,7 @@ class Crawler:
             if(self.webPages_data[i] != None):
                 temp.append(self.webPages_data[i])
 
-        with open("webPages2.json", "w", encoding="utf-8") as file:
+        with open("webPages.json", "w", encoding="utf-8") as file:
             json.dump(temp, file, ensure_ascii=False, indent=4)
 
 
